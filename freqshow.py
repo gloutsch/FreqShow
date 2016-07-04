@@ -69,17 +69,13 @@ ui.Button.border_px    = 2
 
 
 if __name__ == '__main__':
-	# Initialize pygame and SDL to use the PiTFT display and touchscreen.
-	os.putenv('SDL_VIDEODRIVER', 'fbcon')
-	os.putenv('SDL_FBDEV'      , '/dev/fb1')
-	os.putenv('SDL_MOUSEDRV'   , 'TSLIB')
-	os.putenv('SDL_MOUSEDEV'   , '/dev/input/touchscreen')
 	pygame.display.init()
 	pygame.font.init()
-	pygame.mouse.set_visible(False)
 	# Get size of screen and create main rendering surface.
-	size = (pygame.display.Info().current_w, pygame.display.Info().current_h)
-	screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
+	half_w = pygame.display.Info().current_w / 2
+	half_h = pygame.display.Info().current_h /2
+	size = (half_w, half_h)
+	screen = pygame.display.set_mode(size)
 	# Display splash screen.
 	splash = pygame.image.load('freqshow_splash.png')
 	screen.fill(MAIN_BG)
